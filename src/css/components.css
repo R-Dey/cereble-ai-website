@@ -1,0 +1,485 @@
+/* ==========================================================================
+   Component Styles — Shared components used across all pages
+   Dependencies: variables.css, reset.css, global.css
+   ========================================================================== */
+
+/* ==========================================================================
+   Header Component
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background-color: var(--page-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 64px;
+  transition: min-height 0.3s ease;
+}
+
+/* ── Logo ── */
+
+.header__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.header__logo:hover,
+.header__logo:focus-visible {
+  opacity: 0.8;
+}
+
+.header__logo-svg {
+  display: block;
+  width: 140px;
+  height: 32px;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
+}
+
+/* ── Mobile Toggle ── */
+
+.header__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-sm);
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.header__toggle:hover,
+.header__toggle:focus-visible {
+  color: var(--cereble-blue);
+}
+
+.header__toggle[hidden] {
+  display: none;
+}
+
+/* Icon swap: show hamburger by default, close when expanded */
+.header__toggle-icon--close {
+  display: none;
+}
+
+.header__toggle[aria-expanded="true"] .header__toggle-icon--open {
+  display: none;
+}
+
+.header__toggle[aria-expanded="true"] .header__toggle-icon--close {
+  display: block;
+}
+
+/* ── Navigation ── */
+
+.header__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-sm);
+  width: 100%;
+  padding-block: var(--space-md);
+  order: 3; /* Push below logo + toggle row */
+}
+
+/* JS-enhanced: hide nav on mobile until toggled */
+.header[data-nav-enhanced] .header__nav {
+  display: none;
+}
+
+.header[data-nav-enhanced]
+  .header__toggle[aria-expanded="true"]
+  ~ .header__nav {
+  display: flex;
+}
+
+.header__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header__menu-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__menu-item:last-child {
+  border-bottom: none;
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-sm) 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    padding 0.3s ease,
+    min-height 0.3s ease,
+    font-size 0.3s ease;
+}
+
+.header__link:hover,
+.header__link:focus-visible {
+  color: var(--cereble-blue-accessible);
+}
+
+.header__link[aria-current="page"] {
+  color: var(--cereble-blue-accessible);
+  font-weight: var(--fw-semibold);
+}
+
+/* ── Enrol CTA ── */
+
+.header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-xl);
+  background: var(--gradient-brand-accessible);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-top: var(--space-sm);
+  text-align: center;
+  transition:
+    opacity var(--transition-base),
+    box-shadow var(--transition-base),
+    padding 0.3s ease,
+    min-height 0.3s ease,
+    font-size 0.3s ease;
+}
+
+.header__cta:hover,
+.header__cta:focus-visible {
+  opacity: 0.9;
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   Header — Tablet & Desktop (768px+)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .header__container {
+    flex-wrap: nowrap;
+    gap: var(--space-xl);
+  }
+
+  /* Always hide toggle on desktop */
+  .header__toggle {
+    display: none;
+  }
+
+  /* Always show nav on desktop, even with JS enhancement */
+  .header__nav,
+  .header[data-nav-enhanced] .header__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-xl);
+    width: auto;
+    padding-block: 0;
+    order: unset;
+  }
+
+  .header__menu {
+    flex-direction: row;
+    gap: var(--space-xs);
+  }
+
+  .header__menu-item {
+    border-bottom: none;
+  }
+
+  .header__link {
+    padding: var(--space-sm) var(--space-sm);
+    position: relative;
+  }
+
+  /* Active page indicator — bottom border on desktop */
+  .header__link[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--space-sm);
+    right: var(--space-sm);
+    height: 2px;
+    background: var(--gradient-brand);
+    border-radius: 1px;
+  }
+
+  .header__cta {
+    margin-top: 0;
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================================================
+   Header — Compact State (scroll-shrink)
+   Toggled via JS when the announcement bar scrolls out of view.
+   ========================================================================== */
+
+.header--compact .header__container {
+  min-height: 42px;
+}
+
+.header--compact .header__logo-svg {
+  width: 100px;
+  height: 23px;
+}
+
+.header--compact .header__cta {
+  min-height: 32px;
+  padding: var(--space-xs) var(--space-lg);
+  font-size: var(--text-badge);
+}
+
+/* Compact on desktop: tighter nav link padding */
+@media (min-width: 768px) {
+  .header--compact .header__link {
+    padding: var(--space-xs) var(--space-sm);
+    min-height: 32px;
+    font-size: var(--text-sm);
+  }
+}
+
+/* Mobile: when nav is open, override compact back to full size */
+@media (max-width: 767px) {
+  .header--compact .header__toggle[aria-expanded="true"] ~ .header__nav {
+    padding-block: var(--space-md);
+  }
+}
+
+/* ==========================================================================
+   Header — Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .header__toggle,
+  .header__link,
+  .header__cta,
+  .header__container,
+  .header__logo-svg {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Footer Component
+   ========================================================================== */
+
+.footer {
+  background-color: var(--accent-dark);
+  color: var(--color-text-on-dark);
+  padding-block: var(--space-section) var(--space-2xl);
+}
+
+.footer__container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* ── Grid layout ── */
+
+.footer__grid {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+/* ── Brand column ── */
+
+.footer__brand {
+  max-width: 320px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.footer__logo:hover,
+.footer__logo:focus-visible {
+  opacity: 0.8;
+}
+
+.footer__logo {
+  transition: opacity var(--transition-fast);
+}
+
+.footer__logo-img {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: screen;
+}
+
+.footer__description {
+  margin-top: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-text-on-dark-muted);
+}
+
+/* ── Nav columns ── */
+
+.footer__nav-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-badge);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-badge);
+  text-transform: uppercase;
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-md);
+}
+
+.footer__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer__link {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-on-dark-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--color-brand-blue-light);
+}
+
+/* ── Contact column ── */
+
+.footer__address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.footer__contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer__contact-icon {
+  flex-shrink: 0;
+}
+
+.footer__postal {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--lh-body);
+  color: var(--color-text-on-dark-muted);
+}
+
+/* ── Divider & Copyright ── */
+
+.footer__divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-lg);
+}
+
+.footer__copyright {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-on-dark-muted);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Footer — Tablet (768px+)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl) var(--space-xl);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==========================================================================
+   Footer — Desktop (1024px+)
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__brand {
+    grid-column: auto;
+  }
+}
+
+/* ==========================================================================
+   Footer — Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__logo,
+  .footer__link {
+    transition: none;
+  }
+}

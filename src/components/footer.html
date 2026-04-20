@@ -1,0 +1,144 @@
+<!--
+  Component: footer
+  Description: Site-wide footer with brand info, grouped navigation, contact details, and copyright
+  Dependencies: components.css
+  CMS fields: footer_logo, footer_description, footer_nav_product, footer_nav_company, footer_nav_legal, footer_contact, footer_email, footer_address, footer_copyright
+-->
+
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <!-- CMS: footer_brand -->
+      <div class="footer__brand">
+        <!-- CMS: footer_logo -->
+        <a
+          href="index.html"
+          class="footer__logo"
+          aria-label="Cereble Ai — Home"
+        >
+          <img
+            class="footer__logo-img"
+            src="../assets/Final-Logo-Cereble-AI-Logo-BlueLilac.png"
+            alt="Cereble Ai"
+            width="300"
+            height="68"
+            loading="lazy"
+          />
+        </a>
+        <!-- /CMS: footer_logo -->
+        <!-- CMS: footer_description -->
+        <p class="footer__description">
+          AI-powered, teacher-evaluated chapter-wise test series for CBSE &amp;
+          ICSE students in Classes VI&ndash;VIII.
+        </p>
+        <!-- /CMS: footer_description -->
+      </div>
+      <!-- /CMS: footer_brand -->
+
+      <!-- CMS: footer_nav_product -->
+      <nav class="footer__nav" aria-label="Product">
+        <h3 class="footer__nav-heading">Product</h3>
+        <ul class="footer__nav-list">
+          <li>
+            <a href="index.html" class="footer__link">Home</a>
+          </li>
+          <li>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+          </li>
+          <li>
+            <a href="pricing.html" class="footer__link">Pricing</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /CMS: footer_nav_product -->
+
+      <!-- CMS: footer_nav_company -->
+      <nav class="footer__nav" aria-label="Company">
+        <h3 class="footer__nav-heading">Company</h3>
+        <ul class="footer__nav-list">
+          <li>
+            <a href="about.html" class="footer__link">About</a>
+          </li>
+          <li>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /CMS: footer_nav_company -->
+
+      <!-- CMS: footer_nav_legal -->
+      <nav class="footer__nav" aria-label="Legal">
+        <h3 class="footer__nav-heading">Legal</h3>
+        <ul class="footer__nav-list">
+          <li>
+            <a href="privacy-policy.html" class="footer__link"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a href="terms.html" class="footer__link">Terms &amp; Conditions</a>
+          </li>
+          <li>
+            <a href="refund-policy.html" class="footer__link">Refund Policy</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /CMS: footer_nav_legal -->
+
+      <!-- CMS: footer_contact -->
+      <div class="footer__contact">
+        <h3 class="footer__nav-heading">Contact</h3>
+        <address class="footer__address">
+          <!-- CMS: footer_email -->
+          <a
+            href="mailto:sales@qquestedutech.com"
+            class="footer__link footer__contact-link"
+          >
+            <svg
+              class="footer__contact-icon"
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <rect
+                x="2"
+                y="4"
+                width="20"
+                height="16"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M2 7l10 7 10-7"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            sales@qquestedutech.com
+          </a>
+          <!-- /CMS: footer_email -->
+          <!-- CMS: footer_address -->
+          <p class="footer__postal">
+            120/1, Saastitala Road, Talpukur,<br />
+            Barrackpore, West Bengal 700123
+          </p>
+          <!-- /CMS: footer_address -->
+        </address>
+      </div>
+      <!-- /CMS: footer_contact -->
+    </div>
+
+    <hr class="footer__divider" />
+
+    <!-- CMS: footer_copyright -->
+    <p class="footer__copyright">
+      &copy; 2026 Qquest Edutech LLP. All rights reserved.
+    </p>
+    <!-- /CMS: footer_copyright -->
+  </div>
+</footer>

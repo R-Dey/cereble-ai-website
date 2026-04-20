@@ -1,0 +1,131 @@
+<!--
+  Component: header
+  Description: Site-wide navigation header with logo, nav links, mobile toggle, and enrol CTA
+  Dependencies: components.css, global.js
+  CMS fields: header_logo, header_nav_links, header_cta
+-->
+
+<header class="header" data-header>
+  <div class="header__container">
+    <!-- CMS: header_logo -->
+    <a href="index.html" class="header__logo" aria-label="Cereble Ai — Home">
+      <svg
+        class="header__logo-svg"
+        aria-hidden="true"
+        width="140"
+        height="32"
+        viewBox="0 0 140 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient
+            id="logo-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+            gradientTransform="rotate(120)"
+          >
+            <stop offset="0%" stop-color="#4A8FD6" />
+            <stop offset="100%" stop-color="#9B6FCC" />
+          </linearGradient>
+        </defs>
+        <text
+          x="0"
+          y="24"
+          font-family="Montserrat, sans-serif"
+          font-weight="700"
+          font-size="22"
+          fill="#0F1923"
+        >
+          Cereble
+        </text>
+        <text
+          x="93"
+          y="24"
+          font-family="Montserrat, sans-serif"
+          font-weight="700"
+          font-size="22"
+          fill="url(#logo-gradient)"
+        >
+          Ai
+        </text>
+      </svg>
+    </a>
+    <!-- /CMS: header_logo -->
+
+    <button
+      class="header__toggle"
+      data-header-toggle
+      type="button"
+      aria-expanded="false"
+      aria-controls="header-nav"
+      aria-label="Menu"
+      hidden
+    >
+      <!-- Hamburger icon -->
+      <svg
+        class="header__toggle-icon header__toggle-icon--open"
+        aria-hidden="true"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M3 6h18M3 12h18M3 18h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+      <!-- Close icon -->
+      <svg
+        class="header__toggle-icon header__toggle-icon--close"
+        aria-hidden="true"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <!-- CMS: header_nav -->
+    <nav
+      id="header-nav"
+      class="header__nav"
+      data-header-nav
+      aria-label="Main navigation"
+    >
+      <ul class="header__menu">
+        <li class="header__menu-item">
+          <a href="index.html" class="header__link" aria-current="page">Home</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="about.html" class="header__link">About</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="how-it-works.html" class="header__link">How It Works</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="pricing.html" class="header__link">Pricing</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="contact.html" class="header__link">Contact</a>
+        </li>
+      </ul>
+      <!-- CMS: header_cta -->
+      <a href="#enrol" class="header__cta">Enrol Now</a>
+      <!-- /CMS: header_cta -->
+    </nav>
+    <!-- /CMS: header_nav -->
+  </div>
+</header>
